@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        #login{font-family:consolas;height: 75%;width: 93%;background:rgba(36, 36, 39, 0.580);border-radius: 50px;padding: 30px; color: aliceblue;}
+        .but_old{width: 239px;min-height: 50px;display: block;background-color: #52747a78;border: 2px solid #f0f0ed;color: rgb(255, 136, 0);padding: 9px 14px;font-size: 15px;margin-left:1%;cursor: pointer; border-radius: 10px;}
+        .but_old:hover{background-color: #ef5c28;color: #fff;}        
+    </style>
+</head>
+    <body>       
+        <div id="login">
+            <div style="font-weight: bolder; font-size: 60px; background-color: rgba(255, 254, 254, 0.336); border-radius: 18px; padding: 12px; color: #000000;" align="center">Homework 2(作業說明)</div>
+            <h1 style="color: #b80101;">⭐ 請勿擅自更改函式名稱</h1>
+            <h1>作業下載:</h1>
+            <form action="/download_homework_file/Homework_2.zip"><button class="but_old" style="font-weight:bold; font-family:consolas; font-size:20px;">下載作業檔案(hw2)</button></form>
+            <h1>作業說明:</h1>
+            <table>
+                <tr>
+                    <td valign="top" style="font-size: 23px; color: rgb(255, 136, 0);">1.&nbsp;</td><td style="font-size: 20px; font-family:consolas; ">請設計一個函式 Homework_2，它的參數有三個：matrix、y、x。</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="font-size: 23px; color: rgb(255, 136, 0);">2.&nbsp;</td><td style="font-size: 20px; font-family:consolas; ">matrix 的型態為 list[list[int]]; y、x 的型態為 int。</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="font-size: 23px; color: rgb(255, 136, 0);">3.&nbsp;</td><td style="font-size: 20px; font-family:consolas; ">請依照參數將 matrix 轉換成 y * x 的二維陣列。</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="font-size: 23px; color: rgb(255, 136, 0);">4.&nbsp;</td><td style="font-size: 20px; font-family:consolas; ">如果可以成功轉換為新的二維陣列，回傳新的二維陣列和 True，無法則回傳原本的 matrix 和 False。</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="font-size: 23px; color: rgb(255, 136, 0);">5.&nbsp;</td><td style="font-size: 20px; font-family:consolas; ">import 函式庫來撰寫作業，作業以0分計算。(ex. import numpy ...)</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="font-size: 23px; color: rgb(255, 136, 0);">6.&nbsp;</td><td style="font-size: 20px; font-family:consolas; ">最後答案 return 的型態為 list[list[list[int]], bool]。</td>
+                </tr>
+            </table>
+            <h1>注意事項:</h1>
+            <h3 style="font-weight:normal;">
+                &nbsp;&nbsp;🟠 1 <= matrix[i][j]、y、x <= 10000</br>
+                &nbsp;&nbsp;🟠 1 <= len(matrix)、len(matrix[0]) <= 1000</br>
+                &nbsp;&nbsp;🟠 請參考以下範例。</br>
+            </h3>
+            <h1>範例一:</h1>
+                <div style="background-color: rgba(0, 0, 0, 0.705); border-radius: 18px; height: 50%; width: auto; padding: 12px; font-size: 18px;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;Input&nbsp;: matrix = [[3,4],[5,6]], y = 1, x = 4</br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Output: [[[3, 4, 5, 6]], True]
+                </div><br>
+            
+                <div style="background-color: rgba(0, 0, 0, 0.705); border-radius: 1px; height: 50%; width: auto; padding: 10px; font-size: 14px;">
+                    <h2>範例一圖解:</h2>
+                    <img src="/img/hw2.png" width="100%" height="100%">
+                    <br><br>
+                </div>
+            <h1>範例二:</h1>
+                <div style="background-color: rgba(0, 0, 0, 0.705); border-radius: 18px; height: 50%; width: auto; padding: 12px; font-size: 18px;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;Input&nbsp;: matrix = [[40,68,55],[21,22,37],[70,7,23],[11,23,77]], y = 4, x = 3</br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Output: [[[40,68,55],[21,22,37],[70,7,23],[11,23,77]], True]
+                </div>
+            <h1>範例三:</h1>
+                <div style="background-color: rgba(0, 0, 0, 0.705); border-radius: 18px; height: 50%; width: auto; padding: 12px; font-size: 18px;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;Input&nbsp;: matrix = [[10,21],[31,44]], y = 2, x = 3</br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Output: [[[10,21],[31,44]], False]
+                </div>
+        </div></br>
+    </body>
+</html>

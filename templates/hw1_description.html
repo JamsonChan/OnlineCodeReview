@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        #login{font-family:consolas;height: 75%;width: 93%;background:rgba(36, 36, 39, 0.580);border-radius: 50px;padding: 30px; color: aliceblue;}
+        .but_old{width: 239px;min-height: 50px;display: block;background-color: #52747a78;border: 2px solid #f0f0ed;color: rgb(255, 136, 0);padding: 9px 14px;font-size: 15px;margin-left:1%;cursor: pointer; border-radius: 10px;}
+        .but_old:hover{background-color: #ef5c28;color: #fff;}        
+    </style>
+</head>
+    <body>       
+        <div id="login">
+            <div style="font-weight: bolder; font-size: 60px; background-color: rgba(255, 254, 254, 0.336); border-radius: 18px; padding: 12px; color: #000000;" align="center">Homework 1(作業說明)</div>
+            <h1 style="color: #b80101;">⭐ 請勿擅自更改類別和方法名稱</h1>
+            <h1>作業下載:</h1>
+            <form action="/download_homework_file/Homework_1.zip"><button class="but_old" style="font-weight:bold; font-family:consolas; font-size:20px;">下載作業檔案(hw1)</button></form>
+            <h1>作業說明:</h1>
+            <table>
+                <tr>
+                    <td valign="top" style="font-size: 23px; color: rgb(255, 136, 0);">1.&nbsp;</td><td style="font-size: 20px; font-family:consolas; ">Class Homework_1 它的參數有四個：list1、list2、parameter1、parameter2。</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="font-size: 23px; color: rgb(255, 136, 0);">2.&nbsp;</td><td style="font-size: 20px; font-family:consolas; ">請設計三個類別方法：division_list1、multiplication_list2、remainder_list1_and_list2。</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="font-size: 23px; color: rgb(255, 136, 0);">3.&nbsp;</td><td style="font-size: 20px; font-family:consolas; ">類別方法執行順序：(division -> multiplication -> remainder)。</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="font-size: 23px; color: rgb(255, 136, 0);">4.&nbsp;</td><td style="font-size: 20px; font-family:consolas; ">list1、list2 的型態為 list[int]; parameter1、parameter2 的型態為 int。</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="font-size: 23px; color: rgb(255, 136, 0);">5.&nbsp;</td><td style="font-size: 20px; font-family:consolas; ">division_list1()：list1[i] 整除 parameter1 並更新 list1。</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="font-size: 23px; color: rgb(255, 136, 0);">6.&nbsp;</td><td style="font-size: 20px; font-family:consolas; ">multiplication_list2()：list2[i] 乘以 parameter2 並更新 list2。</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="font-size: 23px; color: rgb(255, 136, 0);">7.&nbsp;</td><td style="font-size: 20px; font-family:consolas; ">remainder_list1_and_list2()：list1[i] 除以 list2[i] 的餘數加入新的陣列並回傳答案。</td>
+                </tr>
+                <tr>
+                    <td valign="top" style="font-size: 23px; color: rgb(255, 136, 0);">8.&nbsp;</td><td style="font-size: 20px; font-family:consolas; ">最後答案 return 的型態為 list。</td>
+                </tr>
+            </table>
+            <h1>注意事項:</h1>
+            <h3 style="font-weight:normal;">
+                &nbsp;&nbsp;🟠 list1、list2 中的數字可能會重複。</br>
+                &nbsp;&nbsp;🟠 list1、list2、parameter1、parameter2 的數字範圍為 0 ~ 10000。</br>
+                &nbsp;&nbsp;🟠 1 <= len(list1) == len(list2) <= 100。</br>
+                &nbsp;&nbsp;🟠 請參考以下範例。</br>
+            </h3>
+            <h1>範例一:</h1>
+                <div style="background-color: rgba(0, 0, 0, 0.705); border-radius: 18px; height: 50%; width: auto; padding: 12px; font-size: 18px;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;Input&nbsp;: list1 = [3,2], list2 = [2,3], parameter1 = 2, parameter2 = 3</br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Output: [1,1]
+                </div><br>
+            
+                <div style="background-color: rgba(0, 0, 0, 0.705); border-radius: 1px; height: 50%; width: auto; padding: 10px; font-size: 14px;">
+                    <h2>範例一解說(根據作業規定之類別方法執行順序):</h2>
+                    &nbsp;&nbsp;1.division_list1(): list1[0] 整除 parameter1 = 1，list1[1] 整除 parameter1 = 1，list1 = [1,1]。
+                </div>
+                <div style="background-color: rgba(0, 0, 0, 0.705); border-radius: 1px; height: 50%; width: auto; padding: 10px; font-size: 14px;">    
+                    &nbsp;&nbsp;2.multiplication_list2(): list2[0] 乘以 parameter2 = 6，list2[1] 乘以 parameter2 = 9，list2 = [6, 9]。
+                </div>
+                <div style="background-color: rgba(0, 0, 0, 0.705); border-radius: 1px; height: 50%; width: auto; padding: 10px; font-size: 14px;">
+                    &nbsp;&nbsp;3.remainder_list1_and_list2(): list1[0] 除以 list2[0] 餘數 = 1，list1[1] 除以 list2[1] 餘數 = 1，return [1,1]。<br>
+                    &nbsp;
+                </div>
+            <h1>範例二:</h1>
+                <div style="background-color: rgba(0, 0, 0, 0.705); border-radius: 18px; height: 50%; width: auto; padding: 12px; font-size: 18px;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;Input&nbsp;: list1 = [1,2,3,4,5], list2 = [1,2,3,4,5], parameter1 = 2, parameter2 = 5</br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Output: [0,1,1,2,2]
+                </div>
+            <h1>範例三:</h1>
+                <div style="background-color: rgba(0, 0, 0, 0.705); border-radius: 18px; height: 50%; width: auto; padding: 12px; font-size: 18px;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;Input&nbsp;: list1 = [2,953,110,4], list2 = [501,1502,120,50], parameter1 = 1, parameter2 = 4</br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Output: [2,953,110,4]
+                </div>
+
+        </div></br>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/328/328201.png" type="image/x-icon"/> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <title>資料結構系統首頁</title>
+    <style type="text/css">
+        html{width: 100%;height: 100%;overflow: hidden;font-style: sans-serif;}   
+        body{width: 100%;height: 100%;padding: 0;font-family:'Open Sans',sans-serif;margin: 0;background: url("/img/Background.jpg");background-size: cover;background-attachment: fixed;background-position: center;}   
+        #login{position: fixed;top: 50%;left:50%;transform: translate(-50%,-50%);background:rgba(0, 0, 0, 0.5);text-align: center;border-radius: 10px;padding: 30px;}   
+        #login h1{color: #fff;text-shadow:0 0 10px;letter-spacing: 12px;text-align: center;font-size: 45px;margin: 5px auto;}   
+        #login i{font-size: 100px; margin: 20px auto; color: rgb(219, 202, 202);}
+        input{width: 278px;height: 25px;margin-bottom: 10px;outline: none;padding: 10px;font-size: 13px;   color: #fff;   border-top: 1px solid #312E3D;   border-left: 1px solid #312E3D;   border-right: 1px solid #312E3D;   border-bottom: 1px solid #56536A;   border-radius: 4px;   background-color: #2D2D3F;   }   
+        .but{width: 310px;min-height: 20px;display: block;background-color: #07070785;border: 2px solid #bccdf3;color: #fff;padding: 12px 20px;font-size: 16px;line-height: normal;border-radius: 10px;cursor: pointer; font-family: consolas;}
+        .but:hover{background-color: #fcfcfc85;color: rgb(2, 0, 0);}
+    </style>
+</head>
+<body>
+    <div id="login">
+        <h1>會員首頁</h1>
+        <i class="fa fa-user-circle-o"></i>
+        <form action="/signIn" , method="POST", class="login">
+            <input type="text" placeholder="帳號" required="required" name="studentid"/><br />
+            <input type="password" placeholder="密碼" required="required" name="password"/><br />
+            <!-- <select name="homeworknumber" style="width:294px; height:35px; overflow:hidden; border:1px solid #ccc; -moz-border-radius:5px; /* Gecko browsers */ -webkit-border-radius:5px; /* Webkit browsers */ border-radius:5px; margin:3px; font-family: 'consolas'; font-size: 15px;">
+                <optgroup label="作業編號">
+                    <option>hw3</option>
+                    <option>hw2</option>
+                    <option>hw1</option>
+                </optgroup>
+            </select><br /> -->
+            <br/><button type="submit" class="but" name="homework_number" value="hw2">登入</button><br/>
+        </form>
+        <form action="/register">
+            <button class="but">會員註冊</button><br/>
+        </form>
+        <form action="/forgetpassword1">
+            <button class="but">忘記密碼</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1131 @@
+
+    <!DOCTYPE html>
+    <head>
+        <meta charset='UTF-8'>
+        <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/328/328201.png" type="image/x-icon"/> 
+        <title>程式碼審查</title>
+        <style type="text/css">
+                body, html{font-family:consolas;width: 99.7%;height: 100%; background:url("/img/codereview_background.jpg");background-size: cover;background-attachment: fixed;background-position: center;}
+                .main {width: 80%;margin: 20px auto;background-color: #ffffff88;}
+                form {display:inline-block;}
+                table {border-spacing: 0;width: 100%; border:7px #FFD382 groove;}
+                tr {text-align: center;}
+                th {border-color:#000;border-width:1px;border-style:solid;padding:15px;}
+                td {border-color:#000;border-width:1px;border-style:solid;padding:5px;}
+                table thead {background-color: blue;color: white;}
+                table thead th:first-child {border-radius: 5px 0 0 0;border: 1px solid blue;}
+                .but{font-size: 23px;width: 300px;min-height: 20px;display: block;background-color: #07070785;border: 2px solid #bccdf3;color: #fff;padding: 14px;font-size: 19px;line-height: normal;border-radius: 10px;cursor: pointer; font-family: consolas;}
+                .but:hover {background-color: #fcfcfc85;color: rgb(2, 0, 0);}
+                a:hover {font-size:22px; font-weight: bolder;}
+                .x{}
+        </style>
+        <script type="text/javascript">
+
+            function switch_like(hwn, author_random_id) {
+            
+                var like_obj = document.getElementById('like_' + author_random_id.toString());
+                var like = like_obj.innerHTML;
+                var count_obj = document.getElementById('count_' + author_random_id.toString());
+                var count = Number(count_obj.innerHTML);
+
+                var req = new XMLHttpRequest();
+                req.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        count_obj.innerHTML = this.responseText;
+                    }
+                }
+
+                req.open('POST', '/codelike', true);
+                req.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+
+                if (like == '👍🏿'){
+                    like_obj.innerHTML = '👍';
+                    req.send("count=" + count
+                            + "&like_type=add"
+                            + "&homework_number=" + hwn
+                            + "&author_random_id=" + author_random_id);
+                }
+                else{
+                    like_obj.innerHTML = '👍🏿';
+                    req.send("count=" + count
+                            + "&like_type=minus"
+                            + "&homework_number=" + hwn
+                            + "&author_random_id=" + author_random_id);
+                }
+            }
+
+            function who_like(hwn, id){
+                var obj = document.getElementById('who_like_' + id.toString());
+                var req = new XMLHttpRequest();
+                req.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        obj.innerHTML = this.responseText;
+                    }
+                }
+                req.open('POST', '/codewholike', true);
+                req.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+                req.send("homework_number=" + hwn
+                        + "&id=" + id);
+            }
+        </script>
+    </head>
+    <body>
+        <div style = "text-align: center; padding:30px">
+            <form action="/member_homepage/hw2"><button class="but">返回作業專區</button></form>
+        </div>
+        <div class="main" style="float:left; width: 2%;"></div>
+            <div class="main" style="float:left; width: 26%; height:72%; overflow-y:auto; margin-top: 1.5%; background-size: cover;">
+                <table style="border-collapse:collapse;word-break:keep-all;white-space:nowrap;font-size:20px;">
+                    <tr style="color:#fff;background-color:#FF5F5F;font-size:22px;">
+    <th>狀態</th><th>編號</th><th>讚數</th><th>留言</th></tr><tr style = 'background-color:rgba(58, 233, 58, 0.459);'><td>❌</td><td><a href='/codereview/hw2/1094815' style='text-decoration:none;color:black;'>1094815</a></td><td><a style = 'cursor:pointer' id='like_1094815' onclick="switch_like('hw2', 1094815)">👍🏿</a><a style = 'cursor:pointer' id='count_1094815' onclick="who_like('hw2', 1094815)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_1094815">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_1094815">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_1094815"></div>
+                </dialog></td>
+        <td>0</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/1' style='text-decoration:none;color:black;'>1</a></td><td><a style = 'cursor:pointer' id='like_1' onclick="switch_like('hw2', 1)">👍🏿</a><a style = 'cursor:pointer' id='count_1' onclick="who_like('hw2', 1)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_1">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_1">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_1"></div>
+                </dialog></td>
+        <td>2</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/2' style='text-decoration:none;color:black;'>2</a></td><td><a style = 'cursor:pointer' id='like_2' onclick="switch_like('hw2', 2)">👍🏿</a><a style = 'cursor:pointer' id='count_2' onclick="who_like('hw2', 2)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_2">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_2">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_2"></div>
+                </dialog></td>
+        <td>0</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/3' style='text-decoration:none;color:black;'>3</a></td><td><a style = 'cursor:pointer' id='like_3' onclick="switch_like('hw2', 3)">👍🏿</a><a style = 'cursor:pointer' id='count_3' onclick="who_like('hw2', 3)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_3">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_3">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_3"></div>
+                </dialog></td>
+        <td>2</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/4' style='text-decoration:none;color:black;'>4</a></td><td><a style = 'cursor:pointer' id='like_4' onclick="switch_like('hw2', 4)">👍🏿</a><a style = 'cursor:pointer' id='count_4' onclick="who_like('hw2', 4)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_4">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_4">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_4"></div>
+                </dialog></td>
+        <td>2</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/5' style='text-decoration:none;color:black;'>5</a></td><td><a style = 'cursor:pointer' id='like_5' onclick="switch_like('hw2', 5)">👍🏿</a><a style = 'cursor:pointer' id='count_5' onclick="who_like('hw2', 5)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_5">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_5">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_5"></div>
+                </dialog></td>
+        <td>0</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/6' style='text-decoration:none;color:black;'>6</a></td><td><a style = 'cursor:pointer' id='like_6' onclick="switch_like('hw2', 6)">👍🏿</a><a style = 'cursor:pointer' id='count_6' onclick="who_like('hw2', 6)">3</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_6">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_6">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_6"></div>
+                </dialog></td>
+        <td>6</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/7' style='text-decoration:none;color:black;'>7</a></td><td><a style = 'cursor:pointer' id='like_7' onclick="switch_like('hw2', 7)">👍🏿</a><a style = 'cursor:pointer' id='count_7' onclick="who_like('hw2', 7)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_7">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_7">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_7"></div>
+                </dialog></td>
+        <td>2</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/8' style='text-decoration:none;color:black;'>8</a></td><td><a style = 'cursor:pointer' id='like_8' onclick="switch_like('hw2', 8)">👍🏿</a><a style = 'cursor:pointer' id='count_8' onclick="who_like('hw2', 8)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_8">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_8">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_8"></div>
+                </dialog></td>
+        <td>4</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/9' style='text-decoration:none;color:black;'>9</a></td><td><a style = 'cursor:pointer' id='like_9' onclick="switch_like('hw2', 9)">👍🏿</a><a style = 'cursor:pointer' id='count_9' onclick="who_like('hw2', 9)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_9">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_9">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_9"></div>
+                </dialog></td>
+        <td>1</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/10' style='text-decoration:none;color:black;'>10</a></td><td><a style = 'cursor:pointer' id='like_10' onclick="switch_like('hw2', 10)">👍🏿</a><a style = 'cursor:pointer' id='count_10' onclick="who_like('hw2', 10)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_10">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_10">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_10"></div>
+                </dialog></td>
+        <td>5</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/11' style='text-decoration:none;color:black;'>11</a></td><td><a style = 'cursor:pointer' id='like_11' onclick="switch_like('hw2', 11)">👍🏿</a><a style = 'cursor:pointer' id='count_11' onclick="who_like('hw2', 11)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_11">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_11">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_11"></div>
+                </dialog></td>
+        <td>4</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/12' style='text-decoration:none;color:black;'>12</a></td><td><a style = 'cursor:pointer' id='like_12' onclick="switch_like('hw2', 12)">👍🏿</a><a style = 'cursor:pointer' id='count_12' onclick="who_like('hw2', 12)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_12">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_12">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_12"></div>
+                </dialog></td>
+        <td>1</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/13' style='text-decoration:none;color:black;'>13</a></td><td><a style = 'cursor:pointer' id='like_13' onclick="switch_like('hw2', 13)">👍🏿</a><a style = 'cursor:pointer' id='count_13' onclick="who_like('hw2', 13)">2</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_13">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_13">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_13"></div>
+                </dialog></td>
+        <td>5</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/14' style='text-decoration:none;color:black;'>14</a></td><td><a style = 'cursor:pointer' id='like_14' onclick="switch_like('hw2', 14)">👍🏿</a><a style = 'cursor:pointer' id='count_14' onclick="who_like('hw2', 14)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_14">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_14">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_14"></div>
+                </dialog></td>
+        <td>0</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/15' style='text-decoration:none;color:black;'>15</a></td><td><a style = 'cursor:pointer' id='like_15' onclick="switch_like('hw2', 15)">👍🏿</a><a style = 'cursor:pointer' id='count_15' onclick="who_like('hw2', 15)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_15">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_15">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_15"></div>
+                </dialog></td>
+        <td>4</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/16' style='text-decoration:none;color:black;'>16</a></td><td><a style = 'cursor:pointer' id='like_16' onclick="switch_like('hw2', 16)">👍🏿</a><a style = 'cursor:pointer' id='count_16' onclick="who_like('hw2', 16)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_16">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_16">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_16"></div>
+                </dialog></td>
+        <td>1</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/17' style='text-decoration:none;color:black;'>17</a></td><td><a style = 'cursor:pointer' id='like_17' onclick="switch_like('hw2', 17)">👍🏿</a><a style = 'cursor:pointer' id='count_17' onclick="who_like('hw2', 17)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_17">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_17">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_17"></div>
+                </dialog></td>
+        <td>0</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/18' style='text-decoration:none;color:black;'>18</a></td><td><a style = 'cursor:pointer' id='like_18' onclick="switch_like('hw2', 18)">👍🏿</a><a style = 'cursor:pointer' id='count_18' onclick="who_like('hw2', 18)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_18">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_18">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_18"></div>
+                </dialog></td>
+        <td>3</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/19' style='text-decoration:none;color:black;'>19</a></td><td><a style = 'cursor:pointer' id='like_19' onclick="switch_like('hw2', 19)">👍🏿</a><a style = 'cursor:pointer' id='count_19' onclick="who_like('hw2', 19)">3</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_19">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_19">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_19"></div>
+                </dialog></td>
+        <td>4</td></tr><tr ><td>❌</td><td><a href='/codereview/hw2/20' style='text-decoration:none;color:black;'>20</a></td><td><a style = 'cursor:pointer' id='like_20' onclick="switch_like('hw2', 20)">👍🏿</a><a style = 'cursor:pointer' id='count_20' onclick="who_like('hw2', 20)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_20">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_20">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_20"></div>
+                </dialog></td>
+        <td>0</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/21' style='text-decoration:none;color:black;'>21</a></td><td><a style = 'cursor:pointer' id='like_21' onclick="switch_like('hw2', 21)">👍🏿</a><a style = 'cursor:pointer' id='count_21' onclick="who_like('hw2', 21)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_21">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_21">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_21"></div>
+                </dialog></td>
+        <td>3</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/22' style='text-decoration:none;color:black;'>22</a></td><td><a style = 'cursor:pointer' id='like_22' onclick="switch_like('hw2', 22)">👍🏿</a><a style = 'cursor:pointer' id='count_22' onclick="who_like('hw2', 22)">2</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_22">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_22">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_22"></div>
+                </dialog></td>
+        <td>1</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/23' style='text-decoration:none;color:black;'>23</a></td><td><a style = 'cursor:pointer' id='like_23' onclick="switch_like('hw2', 23)">👍🏿</a><a style = 'cursor:pointer' id='count_23' onclick="who_like('hw2', 23)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_23">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_23">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_23"></div>
+                </dialog></td>
+        <td>3</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/24' style='text-decoration:none;color:black;'>24</a></td><td><a style = 'cursor:pointer' id='like_24' onclick="switch_like('hw2', 24)">👍🏿</a><a style = 'cursor:pointer' id='count_24' onclick="who_like('hw2', 24)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_24">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_24">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_24"></div>
+                </dialog></td>
+        <td>2</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/25' style='text-decoration:none;color:black;'>25</a></td><td><a style = 'cursor:pointer' id='like_25' onclick="switch_like('hw2', 25)">👍🏿</a><a style = 'cursor:pointer' id='count_25' onclick="who_like('hw2', 25)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_25">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_25">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_25"></div>
+                </dialog></td>
+        <td>4</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/26' style='text-decoration:none;color:black;'>26</a></td><td><a style = 'cursor:pointer' id='like_26' onclick="switch_like('hw2', 26)">👍🏿</a><a style = 'cursor:pointer' id='count_26' onclick="who_like('hw2', 26)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_26">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_26">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_26"></div>
+                </dialog></td>
+        <td>0</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/27' style='text-decoration:none;color:black;'>27</a></td><td><a style = 'cursor:pointer' id='like_27' onclick="switch_like('hw2', 27)">👍🏿</a><a style = 'cursor:pointer' id='count_27' onclick="who_like('hw2', 27)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_27">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_27">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_27"></div>
+                </dialog></td>
+        <td>4</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/28' style='text-decoration:none;color:black;'>28</a></td><td><a style = 'cursor:pointer' id='like_28' onclick="switch_like('hw2', 28)">👍🏿</a><a style = 'cursor:pointer' id='count_28' onclick="who_like('hw2', 28)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_28">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_28">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_28"></div>
+                </dialog></td>
+        <td>3</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/29' style='text-decoration:none;color:black;'>29</a></td><td><a style = 'cursor:pointer' id='like_29' onclick="switch_like('hw2', 29)">👍🏿</a><a style = 'cursor:pointer' id='count_29' onclick="who_like('hw2', 29)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_29">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_29">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_29"></div>
+                </dialog></td>
+        <td>2</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/30' style='text-decoration:none;color:black;'>30</a></td><td><a style = 'cursor:pointer' id='like_30' onclick="switch_like('hw2', 30)">👍🏿</a><a style = 'cursor:pointer' id='count_30' onclick="who_like('hw2', 30)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_30">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_30">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_30"></div>
+                </dialog></td>
+        <td>5</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/31' style='text-decoration:none;color:black;'>31</a></td><td><a style = 'cursor:pointer' id='like_31' onclick="switch_like('hw2', 31)">👍🏿</a><a style = 'cursor:pointer' id='count_31' onclick="who_like('hw2', 31)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_31">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_31">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_31"></div>
+                </dialog></td>
+        <td>6</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/32' style='text-decoration:none;color:black;'>32</a></td><td><a style = 'cursor:pointer' id='like_32' onclick="switch_like('hw2', 32)">👍🏿</a><a style = 'cursor:pointer' id='count_32' onclick="who_like('hw2', 32)">4</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_32">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_32">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_32"></div>
+                </dialog></td>
+        <td>6</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/33' style='text-decoration:none;color:black;'>33</a></td><td><a style = 'cursor:pointer' id='like_33' onclick="switch_like('hw2', 33)">👍🏿</a><a style = 'cursor:pointer' id='count_33' onclick="who_like('hw2', 33)">2</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_33">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_33">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_33"></div>
+                </dialog></td>
+        <td>6</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/34' style='text-decoration:none;color:black;'>34</a></td><td><a style = 'cursor:pointer' id='like_34' onclick="switch_like('hw2', 34)">👍🏿</a><a style = 'cursor:pointer' id='count_34' onclick="who_like('hw2', 34)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_34">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_34">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_34"></div>
+                </dialog></td>
+        <td>6</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/35' style='text-decoration:none;color:black;'>35</a></td><td><a style = 'cursor:pointer' id='like_35' onclick="switch_like('hw2', 35)">👍🏿</a><a style = 'cursor:pointer' id='count_35' onclick="who_like('hw2', 35)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_35">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_35">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_35"></div>
+                </dialog></td>
+        <td>4</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/36' style='text-decoration:none;color:black;'>36</a></td><td><a style = 'cursor:pointer' id='like_36' onclick="switch_like('hw2', 36)">👍🏿</a><a style = 'cursor:pointer' id='count_36' onclick="who_like('hw2', 36)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_36">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_36">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_36"></div>
+                </dialog></td>
+        <td>1</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/37' style='text-decoration:none;color:black;'>37</a></td><td><a style = 'cursor:pointer' id='like_37' onclick="switch_like('hw2', 37)">👍🏿</a><a style = 'cursor:pointer' id='count_37' onclick="who_like('hw2', 37)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_37">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_37">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_37"></div>
+                </dialog></td>
+        <td>1</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/38' style='text-decoration:none;color:black;'>38</a></td><td><a style = 'cursor:pointer' id='like_38' onclick="switch_like('hw2', 38)">👍🏿</a><a style = 'cursor:pointer' id='count_38' onclick="who_like('hw2', 38)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_38">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_38">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_38"></div>
+                </dialog></td>
+        <td>1</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/39' style='text-decoration:none;color:black;'>39</a></td><td><a style = 'cursor:pointer' id='like_39' onclick="switch_like('hw2', 39)">👍🏿</a><a style = 'cursor:pointer' id='count_39' onclick="who_like('hw2', 39)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_39">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_39">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_39"></div>
+                </dialog></td>
+        <td>0</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/40' style='text-decoration:none;color:black;'>40</a></td><td><a style = 'cursor:pointer' id='like_40' onclick="switch_like('hw2', 40)">👍🏿</a><a style = 'cursor:pointer' id='count_40' onclick="who_like('hw2', 40)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_40">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_40">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_40"></div>
+                </dialog></td>
+        <td>6</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/41' style='text-decoration:none;color:black;'>41</a></td><td><a style = 'cursor:pointer' id='like_41' onclick="switch_like('hw2', 41)">👍🏿</a><a style = 'cursor:pointer' id='count_41' onclick="who_like('hw2', 41)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_41">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_41">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_41"></div>
+                </dialog></td>
+        <td>3</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/42' style='text-decoration:none;color:black;'>42</a></td><td><a style = 'cursor:pointer' id='like_42' onclick="switch_like('hw2', 42)">👍🏿</a><a style = 'cursor:pointer' id='count_42' onclick="who_like('hw2', 42)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_42">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_42">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_42"></div>
+                </dialog></td>
+        <td>4</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/43' style='text-decoration:none;color:black;'>43</a></td><td><a style = 'cursor:pointer' id='like_43' onclick="switch_like('hw2', 43)">👍🏿</a><a style = 'cursor:pointer' id='count_43' onclick="who_like('hw2', 43)">2</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_43">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_43">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_43"></div>
+                </dialog></td>
+        <td>7</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/44' style='text-decoration:none;color:black;'>44</a></td><td><a style = 'cursor:pointer' id='like_44' onclick="switch_like('hw2', 44)">👍🏿</a><a style = 'cursor:pointer' id='count_44' onclick="who_like('hw2', 44)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_44">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_44">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_44"></div>
+                </dialog></td>
+        <td>1</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/45' style='text-decoration:none;color:black;'>45</a></td><td><a style = 'cursor:pointer' id='like_45' onclick="switch_like('hw2', 45)">👍🏿</a><a style = 'cursor:pointer' id='count_45' onclick="who_like('hw2', 45)">3</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_45">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_45">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_45"></div>
+                </dialog></td>
+        <td>6</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/46' style='text-decoration:none;color:black;'>46</a></td><td><a style = 'cursor:pointer' id='like_46' onclick="switch_like('hw2', 46)">👍🏿</a><a style = 'cursor:pointer' id='count_46' onclick="who_like('hw2', 46)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_46">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_46">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_46"></div>
+                </dialog></td>
+        <td>0</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/47' style='text-decoration:none;color:black;'>47</a></td><td><a style = 'cursor:pointer' id='like_47' onclick="switch_like('hw2', 47)">👍🏿</a><a style = 'cursor:pointer' id='count_47' onclick="who_like('hw2', 47)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_47">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_47">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_47"></div>
+                </dialog></td>
+        <td>0</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/48' style='text-decoration:none;color:black;'>48</a></td><td><a style = 'cursor:pointer' id='like_48' onclick="switch_like('hw2', 48)">👍🏿</a><a style = 'cursor:pointer' id='count_48' onclick="who_like('hw2', 48)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_48">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_48">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_48"></div>
+                </dialog></td>
+        <td>5</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/49' style='text-decoration:none;color:black;'>49</a></td><td><a style = 'cursor:pointer' id='like_49' onclick="switch_like('hw2', 49)">👍🏿</a><a style = 'cursor:pointer' id='count_49' onclick="who_like('hw2', 49)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_49">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_49">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_49"></div>
+                </dialog></td>
+        <td>1</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/50' style='text-decoration:none;color:black;'>50</a></td><td><a style = 'cursor:pointer' id='like_50' onclick="switch_like('hw2', 50)">👍🏿</a><a style = 'cursor:pointer' id='count_50' onclick="who_like('hw2', 50)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_50">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_50">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_50"></div>
+                </dialog></td>
+        <td>0</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/51' style='text-decoration:none;color:black;'>51</a></td><td><a style = 'cursor:pointer' id='like_51' onclick="switch_like('hw2', 51)">👍🏿</a><a style = 'cursor:pointer' id='count_51' onclick="who_like('hw2', 51)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_51">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_51">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_51"></div>
+                </dialog></td>
+        <td>3</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/52' style='text-decoration:none;color:black;'>52</a></td><td><a style = 'cursor:pointer' id='like_52' onclick="switch_like('hw2', 52)">👍🏿</a><a style = 'cursor:pointer' id='count_52' onclick="who_like('hw2', 52)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_52">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_52">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_52"></div>
+                </dialog></td>
+        <td>4</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/53' style='text-decoration:none;color:black;'>53</a></td><td><a style = 'cursor:pointer' id='like_53' onclick="switch_like('hw2', 53)">👍🏿</a><a style = 'cursor:pointer' id='count_53' onclick="who_like('hw2', 53)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_53">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_53">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_53"></div>
+                </dialog></td>
+        <td>0</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/54' style='text-decoration:none;color:black;'>54</a></td><td><a style = 'cursor:pointer' id='like_54' onclick="switch_like('hw2', 54)">👍🏿</a><a style = 'cursor:pointer' id='count_54' onclick="who_like('hw2', 54)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_54">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_54">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_54"></div>
+                </dialog></td>
+        <td>4</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/55' style='text-decoration:none;color:black;'>55</a></td><td><a style = 'cursor:pointer' id='like_55' onclick="switch_like('hw2', 55)">👍🏿</a><a style = 'cursor:pointer' id='count_55' onclick="who_like('hw2', 55)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_55">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_55">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_55"></div>
+                </dialog></td>
+        <td>2</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/56' style='text-decoration:none;color:black;'>56</a></td><td><a style = 'cursor:pointer' id='like_56' onclick="switch_like('hw2', 56)">👍🏿</a><a style = 'cursor:pointer' id='count_56' onclick="who_like('hw2', 56)">2</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_56">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_56">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_56"></div>
+                </dialog></td>
+        <td>5</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/57' style='text-decoration:none;color:black;'>57</a></td><td><a style = 'cursor:pointer' id='like_57' onclick="switch_like('hw2', 57)">👍🏿</a><a style = 'cursor:pointer' id='count_57' onclick="who_like('hw2', 57)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_57">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_57">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_57"></div>
+                </dialog></td>
+        <td>2</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/58' style='text-decoration:none;color:black;'>58</a></td><td><a style = 'cursor:pointer' id='like_58' onclick="switch_like('hw2', 58)">👍🏿</a><a style = 'cursor:pointer' id='count_58' onclick="who_like('hw2', 58)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_58">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_58">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_58"></div>
+                </dialog></td>
+        <td>3</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/59' style='text-decoration:none;color:black;'>59</a></td><td><a style = 'cursor:pointer' id='like_59' onclick="switch_like('hw2', 59)">👍🏿</a><a style = 'cursor:pointer' id='count_59' onclick="who_like('hw2', 59)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_59">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_59">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_59"></div>
+                </dialog></td>
+        <td>5</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/60' style='text-decoration:none;color:black;'>60</a></td><td><a style = 'cursor:pointer' id='like_60' onclick="switch_like('hw2', 60)">👍🏿</a><a style = 'cursor:pointer' id='count_60' onclick="who_like('hw2', 60)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_60">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_60">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_60"></div>
+                </dialog></td>
+        <td>0</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/61' style='text-decoration:none;color:black;'>61</a></td><td><a style = 'cursor:pointer' id='like_61' onclick="switch_like('hw2', 61)">👍🏿</a><a style = 'cursor:pointer' id='count_61' onclick="who_like('hw2', 61)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_61">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_61">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_61"></div>
+                </dialog></td>
+        <td>2</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/62' style='text-decoration:none;color:black;'>62</a></td><td><a style = 'cursor:pointer' id='like_62' onclick="switch_like('hw2', 62)">👍🏿</a><a style = 'cursor:pointer' id='count_62' onclick="who_like('hw2', 62)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_62">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_62">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_62"></div>
+                </dialog></td>
+        <td>0</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/63' style='text-decoration:none;color:black;'>63</a></td><td><a style = 'cursor:pointer' id='like_63' onclick="switch_like('hw2', 63)">👍🏿</a><a style = 'cursor:pointer' id='count_63' onclick="who_like('hw2', 63)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_63">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_63">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_63"></div>
+                </dialog></td>
+        <td>7</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/64' style='text-decoration:none;color:black;'>64</a></td><td><a style = 'cursor:pointer' id='like_64' onclick="switch_like('hw2', 64)">👍🏿</a><a style = 'cursor:pointer' id='count_64' onclick="who_like('hw2', 64)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_64">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_64">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_64"></div>
+                </dialog></td>
+        <td>5</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/65' style='text-decoration:none;color:black;'>65</a></td><td><a style = 'cursor:pointer' id='like_65' onclick="switch_like('hw2', 65)">👍🏿</a><a style = 'cursor:pointer' id='count_65' onclick="who_like('hw2', 65)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_65">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_65">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_65"></div>
+                </dialog></td>
+        <td>0</td></tr><tr ><td>✅</td><td><a href='/codereview/hw2/66' style='text-decoration:none;color:black;'>66</a></td><td><a style = 'cursor:pointer' id='like_66' onclick="switch_like('hw2', 66)">👍🏿</a><a style = 'cursor:pointer' id='count_66' onclick="who_like('hw2', 66)">1</a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_66">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_66">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_66"></div>
+                </dialog></td>
+        <td>4</td></tr><tr ><td>❌</td><td><a href='/codereview/hw2/1104813' style='text-decoration:none;color:black;'>1104813</a></td><td><a style = 'cursor:pointer' id='like_1104813' onclick="switch_like('hw2', 1104813)">👍🏿</a><a style = 'cursor:pointer' id='count_1104813' onclick="who_like('hw2', 1104813)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_1104813">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_1104813">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_1104813"></div>
+                </dialog></td>
+        <td>0</td></tr><tr ><td>❌</td><td><a href='/codereview/hw2/9999999' style='text-decoration:none;color:black;'>9999999</a></td><td><a style = 'cursor:pointer' id='like_9999999' onclick="switch_like('hw2', 9999999)">👍🏿</a><a style = 'cursor:pointer' id='count_9999999' onclick="who_like('hw2', 9999999)"></a>
+                <dialog style="border-width:0px;padding:10px;font-size:30px;background-color:#232935ee;border-radius:25px;" id="infoModal_9999999">
+                    <div><button style = "cursor:pointer;float:right;background-color:#00000000;color:white;border-width:0px;font-size:30px;padding:0px" id="close_9999999">x</button></div><br>
+                    <div style="text-align:center;color:white;" id="who_like_9999999"></div>
+                </dialog></td>
+        <td>0</td></tr>
+        </table></div>
+            <div style="white-space:nowrap; float:right; width: 70%;">
+                <iframe 
+                        frameborder="0"
+                        scrolling="yes"
+                        allowtransparency="no"
+                        noresize="noresize"
+                        align="right"
+                        style="position: relative; background: block; width: 100%; height: 82vh;"
+                        src="http://127.0.0.1:3000/codepage/hw2/1094815">
+                </iframe>
+            </div>
+            <div class="main" style="float:right; width: 3%;"></div>
+        <script type='text/javascript'>
+                var num_1 = 1;
+                var btn_1 = document.getElementById("count_" + num_1.toString());
+                var infoModal_1 = document.getElementById("infoModal_" + num_1.toString());
+                btn_1.addEventListener("click", () => {
+                    infoModal_1.showModal();
+                })
+                var close_1 = document.getElementById("close_" + num_1.toString());
+                close_1.addEventListener("click", () => {
+                    infoModal_1.close();
+                })
+                var num_2 = 2;
+                var btn_2 = document.getElementById("count_" + num_2.toString());
+                var infoModal_2 = document.getElementById("infoModal_" + num_2.toString());
+                btn_2.addEventListener("click", () => {
+                    infoModal_2.showModal();
+                })
+                var close_2 = document.getElementById("close_" + num_2.toString());
+                close_2.addEventListener("click", () => {
+                    infoModal_2.close();
+                })
+                var num_3 = 3;
+                var btn_3 = document.getElementById("count_" + num_3.toString());
+                var infoModal_3 = document.getElementById("infoModal_" + num_3.toString());
+                btn_3.addEventListener("click", () => {
+                    infoModal_3.showModal();
+                })
+                var close_3 = document.getElementById("close_" + num_3.toString());
+                close_3.addEventListener("click", () => {
+                    infoModal_3.close();
+                })
+                var num_4 = 4;
+                var btn_4 = document.getElementById("count_" + num_4.toString());
+                var infoModal_4 = document.getElementById("infoModal_" + num_4.toString());
+                btn_4.addEventListener("click", () => {
+                    infoModal_4.showModal();
+                })
+                var close_4 = document.getElementById("close_" + num_4.toString());
+                close_4.addEventListener("click", () => {
+                    infoModal_4.close();
+                })
+                var num_5 = 5;
+                var btn_5 = document.getElementById("count_" + num_5.toString());
+                var infoModal_5 = document.getElementById("infoModal_" + num_5.toString());
+                btn_5.addEventListener("click", () => {
+                    infoModal_5.showModal();
+                })
+                var close_5 = document.getElementById("close_" + num_5.toString());
+                close_5.addEventListener("click", () => {
+                    infoModal_5.close();
+                })
+                var num_6 = 6;
+                var btn_6 = document.getElementById("count_" + num_6.toString());
+                var infoModal_6 = document.getElementById("infoModal_" + num_6.toString());
+                btn_6.addEventListener("click", () => {
+                    infoModal_6.showModal();
+                })
+                var close_6 = document.getElementById("close_" + num_6.toString());
+                close_6.addEventListener("click", () => {
+                    infoModal_6.close();
+                })
+                var num_7 = 7;
+                var btn_7 = document.getElementById("count_" + num_7.toString());
+                var infoModal_7 = document.getElementById("infoModal_" + num_7.toString());
+                btn_7.addEventListener("click", () => {
+                    infoModal_7.showModal();
+                })
+                var close_7 = document.getElementById("close_" + num_7.toString());
+                close_7.addEventListener("click", () => {
+                    infoModal_7.close();
+                })
+                var num_8 = 8;
+                var btn_8 = document.getElementById("count_" + num_8.toString());
+                var infoModal_8 = document.getElementById("infoModal_" + num_8.toString());
+                btn_8.addEventListener("click", () => {
+                    infoModal_8.showModal();
+                })
+                var close_8 = document.getElementById("close_" + num_8.toString());
+                close_8.addEventListener("click", () => {
+                    infoModal_8.close();
+                })
+                var num_9 = 9;
+                var btn_9 = document.getElementById("count_" + num_9.toString());
+                var infoModal_9 = document.getElementById("infoModal_" + num_9.toString());
+                btn_9.addEventListener("click", () => {
+                    infoModal_9.showModal();
+                })
+                var close_9 = document.getElementById("close_" + num_9.toString());
+                close_9.addEventListener("click", () => {
+                    infoModal_9.close();
+                })
+                var num_10 = 10;
+                var btn_10 = document.getElementById("count_" + num_10.toString());
+                var infoModal_10 = document.getElementById("infoModal_" + num_10.toString());
+                btn_10.addEventListener("click", () => {
+                    infoModal_10.showModal();
+                })
+                var close_10 = document.getElementById("close_" + num_10.toString());
+                close_10.addEventListener("click", () => {
+                    infoModal_10.close();
+                })
+                var num_11 = 11;
+                var btn_11 = document.getElementById("count_" + num_11.toString());
+                var infoModal_11 = document.getElementById("infoModal_" + num_11.toString());
+                btn_11.addEventListener("click", () => {
+                    infoModal_11.showModal();
+                })
+                var close_11 = document.getElementById("close_" + num_11.toString());
+                close_11.addEventListener("click", () => {
+                    infoModal_11.close();
+                })
+                var num_12 = 12;
+                var btn_12 = document.getElementById("count_" + num_12.toString());
+                var infoModal_12 = document.getElementById("infoModal_" + num_12.toString());
+                btn_12.addEventListener("click", () => {
+                    infoModal_12.showModal();
+                })
+                var close_12 = document.getElementById("close_" + num_12.toString());
+                close_12.addEventListener("click", () => {
+                    infoModal_12.close();
+                })
+                var num_13 = 13;
+                var btn_13 = document.getElementById("count_" + num_13.toString());
+                var infoModal_13 = document.getElementById("infoModal_" + num_13.toString());
+                btn_13.addEventListener("click", () => {
+                    infoModal_13.showModal();
+                })
+                var close_13 = document.getElementById("close_" + num_13.toString());
+                close_13.addEventListener("click", () => {
+                    infoModal_13.close();
+                })
+                var num_14 = 14;
+                var btn_14 = document.getElementById("count_" + num_14.toString());
+                var infoModal_14 = document.getElementById("infoModal_" + num_14.toString());
+                btn_14.addEventListener("click", () => {
+                    infoModal_14.showModal();
+                })
+                var close_14 = document.getElementById("close_" + num_14.toString());
+                close_14.addEventListener("click", () => {
+                    infoModal_14.close();
+                })
+                var num_15 = 15;
+                var btn_15 = document.getElementById("count_" + num_15.toString());
+                var infoModal_15 = document.getElementById("infoModal_" + num_15.toString());
+                btn_15.addEventListener("click", () => {
+                    infoModal_15.showModal();
+                })
+                var close_15 = document.getElementById("close_" + num_15.toString());
+                close_15.addEventListener("click", () => {
+                    infoModal_15.close();
+                })
+                var num_16 = 16;
+                var btn_16 = document.getElementById("count_" + num_16.toString());
+                var infoModal_16 = document.getElementById("infoModal_" + num_16.toString());
+                btn_16.addEventListener("click", () => {
+                    infoModal_16.showModal();
+                })
+                var close_16 = document.getElementById("close_" + num_16.toString());
+                close_16.addEventListener("click", () => {
+                    infoModal_16.close();
+                })
+                var num_17 = 17;
+                var btn_17 = document.getElementById("count_" + num_17.toString());
+                var infoModal_17 = document.getElementById("infoModal_" + num_17.toString());
+                btn_17.addEventListener("click", () => {
+                    infoModal_17.showModal();
+                })
+                var close_17 = document.getElementById("close_" + num_17.toString());
+                close_17.addEventListener("click", () => {
+                    infoModal_17.close();
+                })
+                var num_18 = 18;
+                var btn_18 = document.getElementById("count_" + num_18.toString());
+                var infoModal_18 = document.getElementById("infoModal_" + num_18.toString());
+                btn_18.addEventListener("click", () => {
+                    infoModal_18.showModal();
+                })
+                var close_18 = document.getElementById("close_" + num_18.toString());
+                close_18.addEventListener("click", () => {
+                    infoModal_18.close();
+                })
+                var num_19 = 19;
+                var btn_19 = document.getElementById("count_" + num_19.toString());
+                var infoModal_19 = document.getElementById("infoModal_" + num_19.toString());
+                btn_19.addEventListener("click", () => {
+                    infoModal_19.showModal();
+                })
+                var close_19 = document.getElementById("close_" + num_19.toString());
+                close_19.addEventListener("click", () => {
+                    infoModal_19.close();
+                })
+                var num_20 = 20;
+                var btn_20 = document.getElementById("count_" + num_20.toString());
+                var infoModal_20 = document.getElementById("infoModal_" + num_20.toString());
+                btn_20.addEventListener("click", () => {
+                    infoModal_20.showModal();
+                })
+                var close_20 = document.getElementById("close_" + num_20.toString());
+                close_20.addEventListener("click", () => {
+                    infoModal_20.close();
+                })
+                var num_21 = 21;
+                var btn_21 = document.getElementById("count_" + num_21.toString());
+                var infoModal_21 = document.getElementById("infoModal_" + num_21.toString());
+                btn_21.addEventListener("click", () => {
+                    infoModal_21.showModal();
+                })
+                var close_21 = document.getElementById("close_" + num_21.toString());
+                close_21.addEventListener("click", () => {
+                    infoModal_21.close();
+                })
+                var num_22 = 22;
+                var btn_22 = document.getElementById("count_" + num_22.toString());
+                var infoModal_22 = document.getElementById("infoModal_" + num_22.toString());
+                btn_22.addEventListener("click", () => {
+                    infoModal_22.showModal();
+                })
+                var close_22 = document.getElementById("close_" + num_22.toString());
+                close_22.addEventListener("click", () => {
+                    infoModal_22.close();
+                })
+                var num_23 = 23;
+                var btn_23 = document.getElementById("count_" + num_23.toString());
+                var infoModal_23 = document.getElementById("infoModal_" + num_23.toString());
+                btn_23.addEventListener("click", () => {
+                    infoModal_23.showModal();
+                })
+                var close_23 = document.getElementById("close_" + num_23.toString());
+                close_23.addEventListener("click", () => {
+                    infoModal_23.close();
+                })
+                var num_24 = 24;
+                var btn_24 = document.getElementById("count_" + num_24.toString());
+                var infoModal_24 = document.getElementById("infoModal_" + num_24.toString());
+                btn_24.addEventListener("click", () => {
+                    infoModal_24.showModal();
+                })
+                var close_24 = document.getElementById("close_" + num_24.toString());
+                close_24.addEventListener("click", () => {
+                    infoModal_24.close();
+                })
+                var num_25 = 25;
+                var btn_25 = document.getElementById("count_" + num_25.toString());
+                var infoModal_25 = document.getElementById("infoModal_" + num_25.toString());
+                btn_25.addEventListener("click", () => {
+                    infoModal_25.showModal();
+                })
+                var close_25 = document.getElementById("close_" + num_25.toString());
+                close_25.addEventListener("click", () => {
+                    infoModal_25.close();
+                })
+                var num_26 = 26;
+                var btn_26 = document.getElementById("count_" + num_26.toString());
+                var infoModal_26 = document.getElementById("infoModal_" + num_26.toString());
+                btn_26.addEventListener("click", () => {
+                    infoModal_26.showModal();
+                })
+                var close_26 = document.getElementById("close_" + num_26.toString());
+                close_26.addEventListener("click", () => {
+                    infoModal_26.close();
+                })
+                var num_27 = 27;
+                var btn_27 = document.getElementById("count_" + num_27.toString());
+                var infoModal_27 = document.getElementById("infoModal_" + num_27.toString());
+                btn_27.addEventListener("click", () => {
+                    infoModal_27.showModal();
+                })
+                var close_27 = document.getElementById("close_" + num_27.toString());
+                close_27.addEventListener("click", () => {
+                    infoModal_27.close();
+                })
+                var num_28 = 28;
+                var btn_28 = document.getElementById("count_" + num_28.toString());
+                var infoModal_28 = document.getElementById("infoModal_" + num_28.toString());
+                btn_28.addEventListener("click", () => {
+                    infoModal_28.showModal();
+                })
+                var close_28 = document.getElementById("close_" + num_28.toString());
+                close_28.addEventListener("click", () => {
+                    infoModal_28.close();
+                })
+                var num_29 = 29;
+                var btn_29 = document.getElementById("count_" + num_29.toString());
+                var infoModal_29 = document.getElementById("infoModal_" + num_29.toString());
+                btn_29.addEventListener("click", () => {
+                    infoModal_29.showModal();
+                })
+                var close_29 = document.getElementById("close_" + num_29.toString());
+                close_29.addEventListener("click", () => {
+                    infoModal_29.close();
+                })
+                var num_30 = 30;
+                var btn_30 = document.getElementById("count_" + num_30.toString());
+                var infoModal_30 = document.getElementById("infoModal_" + num_30.toString());
+                btn_30.addEventListener("click", () => {
+                    infoModal_30.showModal();
+                })
+                var close_30 = document.getElementById("close_" + num_30.toString());
+                close_30.addEventListener("click", () => {
+                    infoModal_30.close();
+                })
+                var num_31 = 31;
+                var btn_31 = document.getElementById("count_" + num_31.toString());
+                var infoModal_31 = document.getElementById("infoModal_" + num_31.toString());
+                btn_31.addEventListener("click", () => {
+                    infoModal_31.showModal();
+                })
+                var close_31 = document.getElementById("close_" + num_31.toString());
+                close_31.addEventListener("click", () => {
+                    infoModal_31.close();
+                })
+                var num_32 = 32;
+                var btn_32 = document.getElementById("count_" + num_32.toString());
+                var infoModal_32 = document.getElementById("infoModal_" + num_32.toString());
+                btn_32.addEventListener("click", () => {
+                    infoModal_32.showModal();
+                })
+                var close_32 = document.getElementById("close_" + num_32.toString());
+                close_32.addEventListener("click", () => {
+                    infoModal_32.close();
+                })
+                var num_33 = 33;
+                var btn_33 = document.getElementById("count_" + num_33.toString());
+                var infoModal_33 = document.getElementById("infoModal_" + num_33.toString());
+                btn_33.addEventListener("click", () => {
+                    infoModal_33.showModal();
+                })
+                var close_33 = document.getElementById("close_" + num_33.toString());
+                close_33.addEventListener("click", () => {
+                    infoModal_33.close();
+                })
+                var num_34 = 34;
+                var btn_34 = document.getElementById("count_" + num_34.toString());
+                var infoModal_34 = document.getElementById("infoModal_" + num_34.toString());
+                btn_34.addEventListener("click", () => {
+                    infoModal_34.showModal();
+                })
+                var close_34 = document.getElementById("close_" + num_34.toString());
+                close_34.addEventListener("click", () => {
+                    infoModal_34.close();
+                })
+                var num_35 = 35;
+                var btn_35 = document.getElementById("count_" + num_35.toString());
+                var infoModal_35 = document.getElementById("infoModal_" + num_35.toString());
+                btn_35.addEventListener("click", () => {
+                    infoModal_35.showModal();
+                })
+                var close_35 = document.getElementById("close_" + num_35.toString());
+                close_35.addEventListener("click", () => {
+                    infoModal_35.close();
+                })
+                var num_36 = 36;
+                var btn_36 = document.getElementById("count_" + num_36.toString());
+                var infoModal_36 = document.getElementById("infoModal_" + num_36.toString());
+                btn_36.addEventListener("click", () => {
+                    infoModal_36.showModal();
+                })
+                var close_36 = document.getElementById("close_" + num_36.toString());
+                close_36.addEventListener("click", () => {
+                    infoModal_36.close();
+                })
+                var num_37 = 37;
+                var btn_37 = document.getElementById("count_" + num_37.toString());
+                var infoModal_37 = document.getElementById("infoModal_" + num_37.toString());
+                btn_37.addEventListener("click", () => {
+                    infoModal_37.showModal();
+                })
+                var close_37 = document.getElementById("close_" + num_37.toString());
+                close_37.addEventListener("click", () => {
+                    infoModal_37.close();
+                })
+                var num_38 = 38;
+                var btn_38 = document.getElementById("count_" + num_38.toString());
+                var infoModal_38 = document.getElementById("infoModal_" + num_38.toString());
+                btn_38.addEventListener("click", () => {
+                    infoModal_38.showModal();
+                })
+                var close_38 = document.getElementById("close_" + num_38.toString());
+                close_38.addEventListener("click", () => {
+                    infoModal_38.close();
+                })
+                var num_39 = 39;
+                var btn_39 = document.getElementById("count_" + num_39.toString());
+                var infoModal_39 = document.getElementById("infoModal_" + num_39.toString());
+                btn_39.addEventListener("click", () => {
+                    infoModal_39.showModal();
+                })
+                var close_39 = document.getElementById("close_" + num_39.toString());
+                close_39.addEventListener("click", () => {
+                    infoModal_39.close();
+                })
+                var num_40 = 40;
+                var btn_40 = document.getElementById("count_" + num_40.toString());
+                var infoModal_40 = document.getElementById("infoModal_" + num_40.toString());
+                btn_40.addEventListener("click", () => {
+                    infoModal_40.showModal();
+                })
+                var close_40 = document.getElementById("close_" + num_40.toString());
+                close_40.addEventListener("click", () => {
+                    infoModal_40.close();
+                })
+                var num_41 = 41;
+                var btn_41 = document.getElementById("count_" + num_41.toString());
+                var infoModal_41 = document.getElementById("infoModal_" + num_41.toString());
+                btn_41.addEventListener("click", () => {
+                    infoModal_41.showModal();
+                })
+                var close_41 = document.getElementById("close_" + num_41.toString());
+                close_41.addEventListener("click", () => {
+                    infoModal_41.close();
+                })
+                var num_42 = 42;
+                var btn_42 = document.getElementById("count_" + num_42.toString());
+                var infoModal_42 = document.getElementById("infoModal_" + num_42.toString());
+                btn_42.addEventListener("click", () => {
+                    infoModal_42.showModal();
+                })
+                var close_42 = document.getElementById("close_" + num_42.toString());
+                close_42.addEventListener("click", () => {
+                    infoModal_42.close();
+                })
+                var num_43 = 43;
+                var btn_43 = document.getElementById("count_" + num_43.toString());
+                var infoModal_43 = document.getElementById("infoModal_" + num_43.toString());
+                btn_43.addEventListener("click", () => {
+                    infoModal_43.showModal();
+                })
+                var close_43 = document.getElementById("close_" + num_43.toString());
+                close_43.addEventListener("click", () => {
+                    infoModal_43.close();
+                })
+                var num_44 = 44;
+                var btn_44 = document.getElementById("count_" + num_44.toString());
+                var infoModal_44 = document.getElementById("infoModal_" + num_44.toString());
+                btn_44.addEventListener("click", () => {
+                    infoModal_44.showModal();
+                })
+                var close_44 = document.getElementById("close_" + num_44.toString());
+                close_44.addEventListener("click", () => {
+                    infoModal_44.close();
+                })
+                var num_45 = 45;
+                var btn_45 = document.getElementById("count_" + num_45.toString());
+                var infoModal_45 = document.getElementById("infoModal_" + num_45.toString());
+                btn_45.addEventListener("click", () => {
+                    infoModal_45.showModal();
+                })
+                var close_45 = document.getElementById("close_" + num_45.toString());
+                close_45.addEventListener("click", () => {
+                    infoModal_45.close();
+                })
+                var num_46 = 46;
+                var btn_46 = document.getElementById("count_" + num_46.toString());
+                var infoModal_46 = document.getElementById("infoModal_" + num_46.toString());
+                btn_46.addEventListener("click", () => {
+                    infoModal_46.showModal();
+                })
+                var close_46 = document.getElementById("close_" + num_46.toString());
+                close_46.addEventListener("click", () => {
+                    infoModal_46.close();
+                })
+                var num_47 = 47;
+                var btn_47 = document.getElementById("count_" + num_47.toString());
+                var infoModal_47 = document.getElementById("infoModal_" + num_47.toString());
+                btn_47.addEventListener("click", () => {
+                    infoModal_47.showModal();
+                })
+                var close_47 = document.getElementById("close_" + num_47.toString());
+                close_47.addEventListener("click", () => {
+                    infoModal_47.close();
+                })
+                var num_48 = 48;
+                var btn_48 = document.getElementById("count_" + num_48.toString());
+                var infoModal_48 = document.getElementById("infoModal_" + num_48.toString());
+                btn_48.addEventListener("click", () => {
+                    infoModal_48.showModal();
+                })
+                var close_48 = document.getElementById("close_" + num_48.toString());
+                close_48.addEventListener("click", () => {
+                    infoModal_48.close();
+                })
+                var num_49 = 49;
+                var btn_49 = document.getElementById("count_" + num_49.toString());
+                var infoModal_49 = document.getElementById("infoModal_" + num_49.toString());
+                btn_49.addEventListener("click", () => {
+                    infoModal_49.showModal();
+                })
+                var close_49 = document.getElementById("close_" + num_49.toString());
+                close_49.addEventListener("click", () => {
+                    infoModal_49.close();
+                })
+                var num_50 = 50;
+                var btn_50 = document.getElementById("count_" + num_50.toString());
+                var infoModal_50 = document.getElementById("infoModal_" + num_50.toString());
+                btn_50.addEventListener("click", () => {
+                    infoModal_50.showModal();
+                })
+                var close_50 = document.getElementById("close_" + num_50.toString());
+                close_50.addEventListener("click", () => {
+                    infoModal_50.close();
+                })
+                var num_51 = 51;
+                var btn_51 = document.getElementById("count_" + num_51.toString());
+                var infoModal_51 = document.getElementById("infoModal_" + num_51.toString());
+                btn_51.addEventListener("click", () => {
+                    infoModal_51.showModal();
+                })
+                var close_51 = document.getElementById("close_" + num_51.toString());
+                close_51.addEventListener("click", () => {
+                    infoModal_51.close();
+                })
+                var num_52 = 52;
+                var btn_52 = document.getElementById("count_" + num_52.toString());
+                var infoModal_52 = document.getElementById("infoModal_" + num_52.toString());
+                btn_52.addEventListener("click", () => {
+                    infoModal_52.showModal();
+                })
+                var close_52 = document.getElementById("close_" + num_52.toString());
+                close_52.addEventListener("click", () => {
+                    infoModal_52.close();
+                })
+                var num_53 = 53;
+                var btn_53 = document.getElementById("count_" + num_53.toString());
+                var infoModal_53 = document.getElementById("infoModal_" + num_53.toString());
+                btn_53.addEventListener("click", () => {
+                    infoModal_53.showModal();
+                })
+                var close_53 = document.getElementById("close_" + num_53.toString());
+                close_53.addEventListener("click", () => {
+                    infoModal_53.close();
+                })
+                var num_54 = 54;
+                var btn_54 = document.getElementById("count_" + num_54.toString());
+                var infoModal_54 = document.getElementById("infoModal_" + num_54.toString());
+                btn_54.addEventListener("click", () => {
+                    infoModal_54.showModal();
+                })
+                var close_54 = document.getElementById("close_" + num_54.toString());
+                close_54.addEventListener("click", () => {
+                    infoModal_54.close();
+                })
+                var num_55 = 55;
+                var btn_55 = document.getElementById("count_" + num_55.toString());
+                var infoModal_55 = document.getElementById("infoModal_" + num_55.toString());
+                btn_55.addEventListener("click", () => {
+                    infoModal_55.showModal();
+                })
+                var close_55 = document.getElementById("close_" + num_55.toString());
+                close_55.addEventListener("click", () => {
+                    infoModal_55.close();
+                })
+                var num_56 = 56;
+                var btn_56 = document.getElementById("count_" + num_56.toString());
+                var infoModal_56 = document.getElementById("infoModal_" + num_56.toString());
+                btn_56.addEventListener("click", () => {
+                    infoModal_56.showModal();
+                })
+                var close_56 = document.getElementById("close_" + num_56.toString());
+                close_56.addEventListener("click", () => {
+                    infoModal_56.close();
+                })
+                var num_57 = 57;
+                var btn_57 = document.getElementById("count_" + num_57.toString());
+                var infoModal_57 = document.getElementById("infoModal_" + num_57.toString());
+                btn_57.addEventListener("click", () => {
+                    infoModal_57.showModal();
+                })
+                var close_57 = document.getElementById("close_" + num_57.toString());
+                close_57.addEventListener("click", () => {
+                    infoModal_57.close();
+                })
+                var num_58 = 58;
+                var btn_58 = document.getElementById("count_" + num_58.toString());
+                var infoModal_58 = document.getElementById("infoModal_" + num_58.toString());
+                btn_58.addEventListener("click", () => {
+                    infoModal_58.showModal();
+                })
+                var close_58 = document.getElementById("close_" + num_58.toString());
+                close_58.addEventListener("click", () => {
+                    infoModal_58.close();
+                })
+                var num_59 = 59;
+                var btn_59 = document.getElementById("count_" + num_59.toString());
+                var infoModal_59 = document.getElementById("infoModal_" + num_59.toString());
+                btn_59.addEventListener("click", () => {
+                    infoModal_59.showModal();
+                })
+                var close_59 = document.getElementById("close_" + num_59.toString());
+                close_59.addEventListener("click", () => {
+                    infoModal_59.close();
+                })
+                var num_60 = 60;
+                var btn_60 = document.getElementById("count_" + num_60.toString());
+                var infoModal_60 = document.getElementById("infoModal_" + num_60.toString());
+                btn_60.addEventListener("click", () => {
+                    infoModal_60.showModal();
+                })
+                var close_60 = document.getElementById("close_" + num_60.toString());
+                close_60.addEventListener("click", () => {
+                    infoModal_60.close();
+                })
+                var num_61 = 61;
+                var btn_61 = document.getElementById("count_" + num_61.toString());
+                var infoModal_61 = document.getElementById("infoModal_" + num_61.toString());
+                btn_61.addEventListener("click", () => {
+                    infoModal_61.showModal();
+                })
+                var close_61 = document.getElementById("close_" + num_61.toString());
+                close_61.addEventListener("click", () => {
+                    infoModal_61.close();
+                })
+                var num_62 = 62;
+                var btn_62 = document.getElementById("count_" + num_62.toString());
+                var infoModal_62 = document.getElementById("infoModal_" + num_62.toString());
+                btn_62.addEventListener("click", () => {
+                    infoModal_62.showModal();
+                })
+                var close_62 = document.getElementById("close_" + num_62.toString());
+                close_62.addEventListener("click", () => {
+                    infoModal_62.close();
+                })
+                var num_63 = 63;
+                var btn_63 = document.getElementById("count_" + num_63.toString());
+                var infoModal_63 = document.getElementById("infoModal_" + num_63.toString());
+                btn_63.addEventListener("click", () => {
+                    infoModal_63.showModal();
+                })
+                var close_63 = document.getElementById("close_" + num_63.toString());
+                close_63.addEventListener("click", () => {
+                    infoModal_63.close();
+                })
+                var num_64 = 64;
+                var btn_64 = document.getElementById("count_" + num_64.toString());
+                var infoModal_64 = document.getElementById("infoModal_" + num_64.toString());
+                btn_64.addEventListener("click", () => {
+                    infoModal_64.showModal();
+                })
+                var close_64 = document.getElementById("close_" + num_64.toString());
+                close_64.addEventListener("click", () => {
+                    infoModal_64.close();
+                })
+                var num_65 = 65;
+                var btn_65 = document.getElementById("count_" + num_65.toString());
+                var infoModal_65 = document.getElementById("infoModal_" + num_65.toString());
+                btn_65.addEventListener("click", () => {
+                    infoModal_65.showModal();
+                })
+                var close_65 = document.getElementById("close_" + num_65.toString());
+                close_65.addEventListener("click", () => {
+                    infoModal_65.close();
+                })
+                var num_66 = 66;
+                var btn_66 = document.getElementById("count_" + num_66.toString());
+                var infoModal_66 = document.getElementById("infoModal_" + num_66.toString());
+                btn_66.addEventListener("click", () => {
+                    infoModal_66.showModal();
+                })
+                var close_66 = document.getElementById("close_" + num_66.toString());
+                close_66.addEventListener("click", () => {
+                    infoModal_66.close();
+                })
+                var num_1094815 = 1094815;
+                var btn_1094815 = document.getElementById("count_" + num_1094815.toString());
+                var infoModal_1094815 = document.getElementById("infoModal_" + num_1094815.toString());
+                btn_1094815.addEventListener("click", () => {
+                    infoModal_1094815.showModal();
+                })
+                var close_1094815 = document.getElementById("close_" + num_1094815.toString());
+                close_1094815.addEventListener("click", () => {
+                    infoModal_1094815.close();
+                })
+                var num_1104813 = 1104813;
+                var btn_1104813 = document.getElementById("count_" + num_1104813.toString());
+                var infoModal_1104813 = document.getElementById("infoModal_" + num_1104813.toString());
+                btn_1104813.addEventListener("click", () => {
+                    infoModal_1104813.showModal();
+                })
+                var close_1104813 = document.getElementById("close_" + num_1104813.toString());
+                close_1104813.addEventListener("click", () => {
+                    infoModal_1104813.close();
+                })
+                var num_9999999 = 9999999;
+                var btn_9999999 = document.getElementById("count_" + num_9999999.toString());
+                var infoModal_9999999 = document.getElementById("infoModal_" + num_9999999.toString());
+                btn_9999999.addEventListener("click", () => {
+                    infoModal_9999999.showModal();
+                })
+                var close_9999999 = document.getElementById("close_" + num_9999999.toString());
+                close_9999999.addEventListener("click", () => {
+                    infoModal_9999999.close();
+                })</script>
+        </body></html>
+    

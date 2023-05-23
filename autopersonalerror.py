@@ -1,0 +1,37 @@
+import os
+from mainpath import mainpath
+def create_personal_error_html(hw_num):
+    html = f"""
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <meta charset="utf-8">
+                    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/328/328201.png" type="image/x-icon"/>
+                    <title>MESSAGE</title>
+                    <style type="text/css">
+                        html{{width: 100%;height: 100%;overflow: hidden;font-style: sans-serif;}}   
+                        body{{width: 100%;height: 100%;padding: 0;font-family:'Open Sans',sans-serif;margin: 0;background: url("/img/picture.png");background-size: cover;background-attachment: fixed;background-position: center;}}
+                        #login{{position: fixed;top: 50%;left:50%;transform: translate(-50%,-50%);background:rgba(0, 0, 0, 0.5);text-align: center;border-radius: 10px;padding: 30px;}}      
+                        #login h1{{color: #fff;text-shadow:0 0 10px;letter-spacing: 5px;text-align: center;white-space:nowrap;}}   
+                        .but{{width: 310px;min-height: 20px;display: block;background-color: #07070785;border: 2px solid #bccdf3;color: #fff;padding: 12px 20px;font-size: 16px;line-height: normal;border-radius: 10px;cursor: pointer; font-family: consolas;}}
+                        .but:hover {{background-color: #fcfcfc85;color: rgb(2, 0, 0);}}
+                    </style>
+                </head>
+                <body>
+                    <div id="login">
+                        <h1>{{{{ message }}}}</h1>
+                        <form action="/personal_data/{hw_num}">
+                            <button class="but">返回會員個人資料</button><br/>
+                        </form>
+                        <form action="/homepage/{hw_num}">
+                            <button class="but">返回會員首頁</button>
+                        </form>
+                    </div>
+                </body>
+            </html>
+    """
+    html = html.replace("'", "\"")
+    os.chdir(mainpath)
+    with open(f"templates/personal_error.html", "w", encoding="utf-8") as file:
+        file.write(html)
+        os.chdir(mainpath) 
